@@ -1,6 +1,46 @@
 import { Component, VERSION } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
+const MOCK_DATA = [
+  {
+    id: '123456',
+    name: 'list 1',
+    children: [
+      {
+        id: '1111',
+        name: 'child list 1',
+        children: [],
+      },
+      {
+        id: '2222',
+        name: 'child list 2',
+        children: [],
+      },
+    ],
+  },
+  {
+    id: '1234567',
+    name: 'list 2',
+    children: [],
+  },
+  {
+    id: '12345678',
+    name: 'list 3',
+    children: [],
+  },
+  {
+    id: '123456789',
+    name: 'list 3',
+    children: [
+      {
+        id: '3333',
+        name: 'list 3 child 1',
+        children: [],
+      }
+    ]
+  }
+]
+
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
@@ -31,8 +71,9 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 })
 export class AppComponent  {
   // name = 'Angular ' + VERSION.major;
-  isShowList = false;
+  isShowList = true;
   buttonName = 'Show List';
+  data = MOCK_DATA;
 
   onBtnClick = () => {
     this.isShowList = !this.isShowList;

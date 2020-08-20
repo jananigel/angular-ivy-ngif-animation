@@ -1,6 +1,9 @@
 <div class="content" *ngIf="isShowList" [@inOutAnimation]>
   <ul>
-    <li>list</li>
+    <li *ngFor="let list of data">
+      <span>{{ list.name }}</span>
+      <i *ngIf="list.children.length" class="right-arrow">></i>
+    </li>
   </ul>
 </div>
 <button (click)="onBtnClick()">{{ buttonName }}</button>
