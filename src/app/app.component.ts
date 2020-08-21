@@ -1,7 +1,13 @@
 import { Component, VERSION } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
-const MOCK_DATA = [
+interface List {
+  id: string;
+  name: string;
+  children: List[];
+}
+
+const MOCK_DATA: List[] = [
   {
     id: '123456',
     name: 'list 1',
@@ -78,5 +84,14 @@ export class AppComponent  {
   onBtnClick = () => {
     this.isShowList = !this.isShowList;
     this.buttonName = this.isShowList ? 'Hide List' : 'Show List';
+  }
+
+  onListClick = (list: List) => {
+    if (list.children && list.children.length) {
+      // next page
+      return;
+    }
+
+    console.log(`list ${list.name} had been clicked`);
   }
 }
